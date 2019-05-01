@@ -4,6 +4,7 @@ use std::fmt;
 pub enum CastJob {
     Writer,
     Director,
+    Artist
 }
 
 impl fmt::Display for CastJob {
@@ -11,6 +12,7 @@ impl fmt::Display for CastJob {
         match *self {
             CastJob::Writer => write!(f, "writer"),
             CastJob::Director => write!(f, "director"),
+            CastJob::Artist => write!(f, "artist"),
         }
     }
 }
@@ -18,4 +20,5 @@ impl fmt::Display for CastJob {
 pub enum Casts {
     Writers(Vec<models::Writer>),
     Directors(Vec<models::Director>),
+    Artists(Vec<models::Artist>),
 }

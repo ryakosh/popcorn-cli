@@ -29,5 +29,9 @@ pub fn cast_query(cast: types::CastJob , term: &str) -> types::Casts {
             types::Casts::Directors(query_result
                 .load::<models::Director>(&conn)
                 .expect("Error executing query")),
+        types::CastJob::Artist => 
+            types::Casts::Artists(query_result
+                .load::<models::Artist>(&conn)
+                .expect("Error executing query")),
     }
 }
