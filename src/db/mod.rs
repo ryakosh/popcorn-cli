@@ -3,22 +3,31 @@ pub mod models;
 
 use crate::diesel;
 use crate::diesel::prelude::*;
-use std::env::var;
-use models::Writer;
+use crate::types;
+use std::env;
 
 fn connect(conn_str: &str) -> PgConnection {
     PgConnection::establish(conn_str).expect(&format!("Error connecting to: {}", conn_str))
 }
 
-pub fn writers_query(term: &str) -> Vec<Writer> {
-
-    let conn = connect(&var("DATABASE_URL").expect("Can't find DATABASE_URL environment variable"));
+pub fn cast_query(cast: types::CastJob , term: &str) -> types::Casts {
+    let conn = connect(&env::var("DATABASE_URL")
+        .expect("Can't find DATABASE_URL environment variable"));
     let query = format!(
-        include_str!("raw/writers_query.sql"),
-        term
+        include_str!("raw/cast_query.sql"),
+        cast=cast,
+        term=term,
     );
+    let query_result = diesel::sql_query(query);
 
-    diesel::sql_query(query)
-        .load(&conn)
-        .expect("Error executing query")
+    match cast {
+        types::CastJob::Writer => 
+            types::Casts::Writers(query_result
+                .load::<models::Writer>(&conn)
+                .expect("Error executing query")),
+        types::CastJob::Director => 
+            types::Casts::Directors(query_result
+                .load::<models::Director>(&conn)
+                .expect("Error executing query")),
+    }
 }
