@@ -1,3 +1,5 @@
+pub mod candidates;
+
 use crate::db::models;
 use std::fmt;
 
