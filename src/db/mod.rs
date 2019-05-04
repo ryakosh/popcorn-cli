@@ -1,5 +1,6 @@
 pub mod schema;
 pub mod models;
+mod utils;
 
 use crate::diesel;
 use crate::diesel::prelude::*;
@@ -47,5 +48,37 @@ pub fn cast_add(candidate: &candidates::CastCandidate) {
         first_name=candidate.first_name(),
         last_name=candidate.last_name(),
         gender=candidate.gender(),
+    )).execute(&conn).expect("Error executing query");
+}
+
+pub fn movies_add(candidate: &candidates::MovieCandidate) {
+    let conn = connect(&env::var("DATABASE_URL")
+        .expect("Can't find DATABASE_URL environment variable"));
+    
+    let movie_id: models::MovieId = diesel::sql_query(format!(
+        include_str!("raw/movies_add.sql"),
+        title=candidate.title(),
+        description=candidate.description(),
+        poster=candidate.poster(),
+        genres=candidate.genres(),
+        languages=candidate.languages(),
+        release_country=candidate.release_country(),
+        release_date=candidate.release_date(),
+        duration=candidate.duration(),
+    )).get_result(&conn).expect("Error executing query");
+
+    diesel::sql_query(format!(
+        include_str!("raw/movies_add-writers.sql"),
+        writers=utils::casts_to_values(movie_id.movie_id, candidate.writers()),
+    )).execute(&conn).expect("Error executing query");
+
+    diesel::sql_query(format!(
+        include_str!("raw/movies_add-directors.sql"),
+        directors=utils::casts_to_values(movie_id.movie_id, candidate.directors()),
+    )).execute(&conn).expect("Error executing query");
+
+    diesel::sql_query(format!(
+        include_str!("raw/movies_add-artists.sql"),
+        artists=utils::casts_to_values(movie_id.movie_id, candidate.artists()),
     )).execute(&conn).expect("Error executing query");
 }
