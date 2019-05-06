@@ -1,7 +1,7 @@
 use crate::db::schema::*;
 
 #[table_name = "writers"]
-#[derive(QueryableByName)]
+#[derive(QueryableByName, Serialize)]
 pub struct Writer {
     pub writer_id: i32,
     pub first_name: String,
@@ -10,7 +10,7 @@ pub struct Writer {
 }
 
 #[table_name = "directors"]
-#[derive(QueryableByName)]
+#[derive(QueryableByName, Serialize)]
 pub struct Director {
     pub director_id: i32,
     pub first_name: String,
@@ -19,7 +19,7 @@ pub struct Director {
 }
 
 #[table_name = "artists"]
-#[derive(QueryableByName)]
+#[derive(QueryableByName, Serialize)]
 pub struct Artist {
     pub artist_id: i32,
     pub first_name: String,
