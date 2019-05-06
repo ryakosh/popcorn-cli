@@ -1,15 +1,15 @@
 use crate::types::CastJob;
 
-pub struct CastCandidate {
+pub struct CastCandidate<'c> {
     job: CastJob,
-    first_name: String,
-    last_name: String,
-    gender: String,
+    first_name: &'c str,
+    last_name: &'c str,
+    gender: &'c str,
 }
 
-impl CastCandidate {
-    pub fn new(job: CastJob, first_name: String, 
-               last_name: String, gender: String) -> CastCandidate {
+impl<'c> CastCandidate<'c> {
+    pub fn new(job: CastJob, first_name: &'c str, 
+               last_name: &'c str, gender: &'c str) -> CastCandidate<'c> {
         CastCandidate {
             job,
             first_name,
@@ -23,37 +23,37 @@ impl CastCandidate {
     }
 
     pub fn first_name(&self) -> &str {
-        &self.first_name
+        self.first_name
     }
 
     pub fn last_name(&self) -> &str {
-        &self.last_name
+        self.last_name
     }
 
     pub fn gender(&self) -> &str {
-        &self.gender
+        self.gender
     }
 }
 
-pub struct MovieCandidate {
-    title: String,
-    description: String,
-    poster: String,
-    genres: String,
-    languages: String,
-    release_country: String,
-    release_date: String,
-    duration: String,
-    writers: String,
-    directors: String,
-    artists: String,
+pub struct MovieCandidate<'m> {
+    title: &'m str,
+    description: &'m str,
+    poster: &'m str,
+    genres: &'m str,
+    languages: &'m str,
+    release_country: &'m str,
+    release_date: &'m str,
+    duration: &'m str,
+    writers: &'m str,
+    directors: &'m str,
+    artists: &'m str,
 }
 
-impl MovieCandidate {
-    pub fn new(title: String, description: String, poster: String,
-               genres: String, languages: String, release_country: String,
-               release_date: String, duration: String,
-               writers: String, directors: String, artists: String) -> MovieCandidate {
+impl<'m> MovieCandidate<'m> {
+    pub fn new(title: &'m str, description: &'m str, poster: &'m str,
+               genres: &'m str, languages: &'m str, release_country: &'m str,
+               release_date: &'m str, duration: &'m str,
+               writers: &'m str, directors: &'m str, artists: &'m str) -> MovieCandidate<'m> {
         MovieCandidate {
             title,
             description,
@@ -70,46 +70,46 @@ impl MovieCandidate {
     }
 
     pub fn title(&self) -> &str {
-        &self.title
+        self.title
     }
 
     pub fn description(&self) -> &str {
-        &self.description
+        self.description
     }
 
     pub fn poster(&self) -> &str {
-        &self.poster
+        self.poster
     }
 
     pub fn genres(&self) -> &str {
-        &self.genres
+        self.genres
     }
 
     pub fn languages(&self) -> &str {
-        &self.languages
+        self.languages
     }
 
     pub fn release_country(&self) -> &str {
-        &self.release_country
+        self.release_country
     }
 
     pub fn release_date(&self) -> &str {
-        &self.release_date
+        self.release_date
     }
 
     pub fn duration(&self) -> &str {
-        &self.duration
+        self.duration
     }
 
     pub fn writers(&self) -> &str {
-        &self.writers
+        self.writers
     }
 
     pub fn directors(&self) -> &str {
-        &self.directors
+        self.directors
     }
 
     pub fn artists(&self) -> &str {
-        &self.artists
+        self.artists
     }
 }
