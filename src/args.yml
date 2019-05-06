@@ -36,8 +36,9 @@ subcommands:
                         help: Positional argument for writer's last name.
                         required: true
                         index: 2
-                    - gender:
+                    - GENDER:
                         help: Positional argument for writer's gender.
+                        required: true
                         index: 3
     - directors:
         about: Subcommand for querying from and adding data to the directors table.
@@ -72,8 +73,9 @@ subcommands:
                         help: Positional argument for director's last name.
                         required: true
                         index: 2
-                    - gender:
+                    - GENDER:
                         help: Positional argument for director's gender.
+                        required: true
                         index: 3
     - artists:
         about: Subcommand for querying from and adding data to the artists table.
@@ -108,8 +110,9 @@ subcommands:
                         help: Positional argument for artist's last name.
                         required: true
                         index: 2
-                    - gender:
+                    - GENDER:
                         help: Positional argument for artist's gender.
+                        required: true
                         index: 3
     - movies:
         about: Subcommand for querying from and adding data to the movies table.
