@@ -56,18 +56,22 @@ fn main() {
             db::cast_add(&candidate);
         }
     } else if let Some(moviesm) = m.subcommand_matches("movies") {
-        let candidate = MovieCandidate::new(moviesm.value_of("TITLE").unwrap(),
-                                            moviesm.value_of("DESCRIPTION").unwrap(),
-                                            moviesm.value_of("POSTER").unwrap(),
-                                            moviesm.value_of("GENRES").unwrap(),
-                                            moviesm.value_of("LANGUAGES").unwrap(),
-                                            moviesm.value_of("RELEASE_COUNTRY").unwrap(),
-                                            moviesm.value_of("RELEASE_DATE").unwrap(),
-                                            moviesm.value_of("DURATION").unwrap(),
-                                            moviesm.value_of("WRITERS").unwrap(),
-                                            moviesm.value_of("DIRECTORS").unwrap(),
-                                            moviesm.value_of("ARTISTS").unwrap());
+        if let Some(querym) = moviesm.subcommand_matches("query") {
+
+        } else if let Some(addm) = moviesm.subcommand_matches("add") {
+            let candidate = MovieCandidate::new(addm.value_of("TITLE").unwrap(),
+                addm.value_of("DESCRIPTION").unwrap(),
+                addm.value_of("POSTER").unwrap(),
+                addm.value_of("GENRES").unwrap(),
+                addm.value_of("LANGUAGES").unwrap(),
+                addm.value_of("RELEASE_COUNTRY").unwrap(),
+                addm.value_of("RELEASE_DATE").unwrap(),
+                addm.value_of("DURATION").unwrap(),
+                addm.value_of("WRITERS").unwrap(),
+                addm.value_of("DIRECTORS").unwrap(),
+                addm.value_of("ARTISTS").unwrap());
         
         db::movies_add(&candidate);
+        }
     }
 }
