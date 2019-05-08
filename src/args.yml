@@ -141,34 +141,45 @@ subcommands:
                 args:
                     - TITLE:
                         help: Positional argument for movie's title.
+                        required: true
                         index: 1
                     - DESCRIPTION:
                         help: Positional argument for movie's description.
+                        required: true
                         index: 2
                     - POSTER:
                         help: Positional argument for movie's poster.
+                        required: true
                         index: 3
                     - GENRES:
                         help: Positional argument for movie's genres.
+                        required: true
                         index: 4
                     - LANGUAGES:
                         help: Positional argument for movie's languages.
+                        required: true
                         index: 5
                     - RELEASE_COUNTRY:
                         help: Positional argument for movie's release country.
+                        required: true
                         index: 6
                     - RELEASE_DATE:
                         help: Positional argument for movie's release date.
+                        required: true
                         index: 7
                     - DURATION:
                         help: Positional argument for movie's duration.
+                        required: true
                         index: 8
                     - WRITERS:
                         help: Positional argument for movie's writers.
+                        required: true
                         index: 9
                     - DIRECTORS:
                         help: Positional argument for movie's directors.
+                        required: true
                         index: 10
-                    - STARS:
+                    - ARTISTS:
                         help: Positional argument for movie's stars.
+                        required: true
                         index: 11
