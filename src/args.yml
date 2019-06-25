@@ -1,0 +1,185 @@
+name: popcorn
+about: CLI for querying from and adding data to the popcorn DB.
+version: "0.1"
+author: ryakosh <ryakosh@gmail.com>
+subcommands:
+    - writers:
+        about: Subcommand for querying from and adding data to the writers table.
+        version: "0.1"
+        author: ryakosh <ryakosh@gmail.com>
+        subcommands:
+            - query:
+                about: Subcommand for querying from the writers table.
+                version: "0.1"
+                author: ryakosh <ryakosh@gmail.com>
+                args:
+                    - SEARCH:
+                        help: Positional argument for searching the writers table.
+                        required: false
+                        index: 1
+                    - id:
+                        help: Option for querying the writers table with an id.
+                        short: i
+                        long: id
+                        takes_value: true
+                        value_name: ID
+            - add:
+                about: Subcommand for adding data to the writers table.
+                version: "0.1"
+                author: ryakosh <ryakosh@gmail.com>
+                args:
+                    - FIRST:
+                        help: Positional argument for writer's first name.
+                        required: true
+                        index: 1
+                    - LAST:
+                        help: Positional argument for writer's last name.
+                        required: true
+                        index: 2
+                    - GENDER:
+                        help: Positional argument for writer's gender.
+                        required: true
+                        index: 3
+    - directors:
+        about: Subcommand for querying from and adding data to the directors table.
+        version: "0.1"
+        author: ryakosh <ryakosh@gmail.com>
+        subcommands:
+            - query:
+                about: Subcommand for querying from the directors table.
+                version: "0.1"
+                author: ryakosh <ryakosh@gmail.com>
+                args:
+                    - SEARCH:
+                        help: Positional argument for searching the directors table.
+                        required: false
+                        index: 1
+                    - id:
+                        help: Option for querying the directors table with an id.
+                        short: i
+                        long: id
+                        takes_value: true
+                        value_name: ID
+            - add:
+                about: Subcommand for adding data to the directors table.
+                version: "0.1"
+                author: ryakosh <ryakosh@gmail.com>
+                args:
+                    - FIRST:
+                        help: Positional argument for director's first name.
+                        required: true
+                        index: 1
+                    - LAST:
+                        help: Positional argument for director's last name.
+                        required: true
+                        index: 2
+                    - GENDER:
+                        help: Positional argument for director's gender.
+                        required: true
+                        index: 3
+    - artists:
+        about: Subcommand for querying from and adding data to the artists table.
+        version: "0.1"
+        author: ryakosh <ryakosh@gmail.com>
+        subcommands:
+            - query:
+                about: Subcommand for querying from the artists table.
+                version: "0.1"
+                author: ryakosh <ryakosh@gmail.com>
+                args:
+                    - SEARCH:
+                        help: Positional argument for searching the artists table.
+                        required: false
+                        index: 1
+                    - id:
+                        help: Option for querying the artists table with an id.
+                        short: i
+                        long: id
+                        takes_value: true
+                        value_name: ID
+            - add:
+                about: Subcommand for adding data to the artists table.
+                version: "0.1"
+                author: ryakosh <ryakosh@gmail.com>
+                args:
+                    - FIRST:
+                        help: Positional argument for artist's first name.
+                        required: true
+                        index: 1
+                    - LAST:
+                        help: Positional argument for artist's last name.
+                        required: true
+                        index: 2
+                    - GENDER:
+                        help: Positional argument for artist's gender.
+                        required: true
+                        index: 3
+    - movies:
+        about: Subcommand for querying from and adding data to the movies table.
+        version: "0.1"
+        author: ryakosh <ryakosh@gmail.com>
+        subcommands:
+            - query:
+                about: Subcommand for querying from the movies table.
+                version: "0.1"
+                author: ryakosh <ryakosh@gmail.com>
+                args:
+                    - SEARCH:
+                        help: Positional argument for searching the movies table.
+                        required: false
+                        index: 1
+                    - id:
+                        help: Option for querying the movies table with an id.
+                        short: i
+                        long: id
+                        takes_value: true
+                        value_name: ID
+            - add:
+                about: Subcommand for adding data to the movies table.
+                version: "0.1"
+                author: ryakosh <ryakosh@gmail.com>
+                args:
+                    - TITLE:
+                        help: Positional argument for movie's title.
+                        required: true
+                        index: 1
+                    - DESCRIPTION:
+                        help: Positional argument for movie's description.
+                        required: true
+                        index: 2
+                    - POSTER:
+                        help: Positional argument for movie's poster.
+                        required: true
+                        index: 3
+                    - GENRES:
+                        help: Positional argument for movie's genres.
+                        required: true
+                        index: 4
+                    - LANGUAGES:
+                        help: Positional argument for movie's languages.
+                        required: true
+                        index: 5
+                    - RELEASE_COUNTRY:
+                        help: Positional argument for movie's release country.
+                        required: true
+                        index: 6
+                    - RELEASE_DATE:
+                        help: Positional argument for movie's release date.
+                        required: true
+                        index: 7
+                    - DURATION:
+                        help: Positional argument for movie's duration.
+                        required: true
+                        index: 8
+                    - WRITERS:
+                        help: Positional argument for movie's writers.
+                        required: true
+                        index: 9
+                    - DIRECTORS:
+                        help: Positional argument for movie's directors.
+                        required: true
+                        index: 10
+                    - ARTISTS:
+                        help: Positional argument for movie's stars.
+                        required: true
+                        index: 11
